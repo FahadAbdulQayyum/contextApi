@@ -2,10 +2,13 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const router = useRouter()
 
   useEffect(() => {
     const tok = async () => {
@@ -15,12 +18,17 @@ export default function Home() {
       // const { data } = await axios.get('/api/auth/login', { headers: { 'x-auth-token': token } })
       // const { data } = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
       try {
-        // const { data } = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-        const dataa = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        const { data } = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
         // const data = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-        console.log('dataa', dataa)
+        console.log('dataa', data)
+        if (!data.success || data === null) {
+          router.replace('/auth/login')
+        }
+
       } catch (err) {
         console.error(err)
+        localStorage.setItem('token', '')
+        router.replace('/auth/login')
       }
     }
     tok()
