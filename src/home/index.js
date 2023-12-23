@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Products from '../../products.json'
 
 const Index = () => {
 
+    const [prod, setProd] = useState({})
+    // const [prod, setProd] = useState()
+
     const addBtn = v => {
         const prd = { ...Products, quantity: v.quantity++ }
-        console.log('vv', v)
+        // setProd({ ...prd })
+        setProd(prd)
+        // console.log('vv', prd)
     }
 
     return (
@@ -36,7 +41,12 @@ const Index = () => {
                 <button
                     className='bg-slate-500 py-1 px-2 ml-5 hover:scale-105 transition-transform'
                     onClick={() => addBtn(v)}
-                >Add to Cart</button>
+                >Add to Cart - {v.quantity}</button>
+                {/* // >Add to Cart - {console.log('prod.quantity', prod.quantity)}</button> */}
+                {/* >Add to Cart - {prod.quantity}</button> */}
+                {/* // >Add to Cart - {prd[v.id]?.quantity}</button> */}
+                {/* // >Add to Cart - {console.log('prod.quantity', prod)}</button> */}
+                {/* >Add to Cart - {console.log('prod.quantity', prod)}</button> */}
             </div>)
             }
         </div >

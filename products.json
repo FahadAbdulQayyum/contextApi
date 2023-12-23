@@ -5,7 +5,7 @@
     "price": 260,
     "url": "https://www.alfatah.pk/cdn/shop/products/IMG-20200428-WA0021_6f439f45-96a3-4d11-8e71-d613beda03bf_1280x.jpg?v=1698651040",
     "Category": "Sweet",
-    "quantity": 1
+    "quantity": 0
   },
   {
     "id": 1,
@@ -13,7 +13,7 @@
     "price": 150,
     "url": "https://images.immediate.co.uk/production/volatile/sites/30/2018/08/mango-fee0d79-e1648560084294.jpg?resize=768,574",
     "Category": "Fruit",
-    "quantity": 1
+    "quantity": 0
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "price": 120,
     "url": "https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bunch-of-bananas-67e91d5.jpg?quality=90&resize=440,400",
     "Category": "Fruit",
-    "quantity": 1
+    "quantity": 0
   },
   {
     "id": 3,
@@ -29,6 +29,6 @@
     "price": 60,
     "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/1200px-Tomato_je.jpg",
     "Category": "Vegetable",
-    "quantity": 1
+    "quantity": 0
   }
 ]
