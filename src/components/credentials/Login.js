@@ -9,26 +9,12 @@ export default function Login() {
 
     const router = useRouter();
 
-    // const onSubmit = async (obj) => {
-    //     const { email, password } = obj
-    // const onSubmit = async (email, password) => {
-    // const onSubmit = async ({ email, password }) => {
     const onSubmit = async (obj) => {
-        // signIn('credentials', { redirect: false, email, password });
-        // const data = await signIn('credentials', { redirect: false, email, password });
-        // console.log('data', data)
-        // if (data.ok) {
-        //     router.push('/')
-        // }
-
-        // const data = await axios.post('/api/auth/login/route', { email, password })
-        // const data = await axios.post('/api/users/login/route', obj)
-        // const data = await axios.post('/api/users/login', ({ email, password }))
-        // const data = await axios.post('/api/auth/login', { email, password })
         const { data } = await axios.post('/api/auth/login', obj)
-        // const data = await axios.post('/api/auth/login', obj)
+        // const { data } = await axios.get('/api/auth/login', { headers: localStorage.getItem('token') })
         localStorage.setItem('token', data.token)
         console.log('|dataaa|', data)
+        router.replace('/')
     }
 
     return <Form signin={true} formSubmit={onSubmit} />

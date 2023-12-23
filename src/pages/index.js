@@ -1,9 +1,31 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  useEffect(() => {
+    const tok = async () => {
+      const token = localStorage.getItem('token')
+      console.log('tokennn', token)
+      // const { data } = await axios.get('/api/auth/login', { headers: localStorage.getItem('token') })
+      // const { data } = await axios.get('/api/auth/login', { headers: { 'x-auth-token': token } })
+      // const { data } = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+      try {
+        // const { data } = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        // const data = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        const data = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        console.log('dataa', data)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    tok()
+  }, [])
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -116,3 +138,14 @@ export default function Home() {
     </main>
   )
 }
+
+
+// export async function getStaticProps() {
+//   const token = localStorage.getItem('token')
+//   console.log('token', token)
+//   return {
+//     props: {
+//       token
+//     }
+//   }
+// }

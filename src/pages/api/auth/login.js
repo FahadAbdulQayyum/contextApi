@@ -5,7 +5,11 @@ import connectDB from "../../../../config/db"
 
 export default async function handler(req, res) {
     const { email, password } = req.body
-    console.log('req.body', req.body)
+    console.log('req.body', req)
+
+    // let email = req.email
+    // let password = req.password
+
     try {
         connectDB()
         const user = await User.findOne({ email })
@@ -21,7 +25,7 @@ export default async function handler(req, res) {
             return res.json({ success: false, msg: "Incorrect Password" })
         }
 
-        jwt.sign({ email: user.email }, 'fahad', {
+        jwt.sign({ email: user.email, password: user.password }, 'fahad', {
             expiresIn: '1h'
         }, (err, token) => {
             if (err) throw err;
