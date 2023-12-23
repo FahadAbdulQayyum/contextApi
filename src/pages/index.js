@@ -16,9 +16,9 @@ export default function Home() {
       // const { data } = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
       try {
         // const { data } = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-        // const data = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-        const data = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-        console.log('dataa', data)
+        const dataa = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        // const data = await axios.post('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
+        console.log('dataa', dataa)
       } catch (err) {
         console.error(err)
       }
