@@ -44,13 +44,26 @@ const Index = () => {
         // prdd = [...prdd, v.quantity++]
         // let prdd = [...Products, v.quantity++]
 
-        let prdd = [...prod, v.quantity++]
-        console.log('prodd', prdd)
-        setProd(prdd)
+        // let prdd = [...prod, v.quantity++]
+        const updatedProducts = prod.map(pd => {
+            if (pd.id === v.id) {
+                console.log('pdddd', pd)
+                return {
+                    ...pd,
+                    quantity: pd.quantity + 1
+                }
+            }
+            return pd;
+        })
+        // console.log('prodd', prdd)
+        console.log('updatedProducts', updatedProducts)
+        // setProd(prdd)
+        setProd(updatedProducts)
         // localStorage.setItem('addToCart', JSON.parse(prd))
         // localStorage.setItem('addToCart', JSON.stringify(prd))
         // localStorage.setItem('addToCart', JSON.stringify([prdd]))
-        localStorage.setItem('addToCart', JSON.stringify(prdd))
+        // localStorage.setItem('addToCart', JSON.stringify(prdd))
+        localStorage.setItem('addToCart', JSON.stringify(updatedProducts))
         // localStorage.setItem('addToCart', prd)
         // localStorage.setItem('addToCart', JSON.parse(prd))
     }
@@ -63,7 +76,8 @@ const Index = () => {
             {/* {prod && prod?.map(v => <div */}
             {/* {Products.map(v => <div */}
             {/* {prdd.map(v => <div */}
-            {prod?.map(v => (typeof v === 'object' && <div
+            {/* {prod?.map(v => (typeof v === 'object' && <div */}
+            {prod?.map(v => <div
                 key={v.id}
                 className='flex py-1'
             >
@@ -73,7 +87,7 @@ const Index = () => {
                     className='bg-slate-500 py-1 px-2 ml-5 hover:scale-105 transition-transform'
                     onClick={() => addBtn(v)}
                 >Add to Cart - {v?.quantity}</button>
-            </div>))
+            </div>)
             }
         </div >
     )
