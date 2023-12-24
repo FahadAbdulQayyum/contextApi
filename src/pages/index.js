@@ -7,7 +7,11 @@ import { useRouter } from 'next/router'
 import Home from '../home';
 // import Navbar from '@/components/navbar/navbar'
 import Navbar from '../navbar'
+import FloatingData from './FloatingData'
 
+
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
 const Index = () => {
 
@@ -35,8 +39,16 @@ const Index = () => {
 
   return (
     <div>
-      <Navbar />
-      <Home />
+      <Provider store={store}>
+
+        <Navbar />
+        <Home />
+        <div
+          className='absolute right-10 bottom-10'
+        >
+          <FloatingData />
+        </div>
+      </Provider>,
     </div>
   )
 }
