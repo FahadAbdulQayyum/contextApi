@@ -11,7 +11,6 @@ const Index = () => {
 
     // const count = useSelector((state) => state.counter.value)
     const count = useSelector((state) => state.counter.Products)
-    // const count = useSelector((state) => state.counter)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -28,10 +27,6 @@ const Index = () => {
         setProd(updatedProducts)
 
         localStorage.setItem('addToCart', JSON.stringify(updatedProducts))
-
-        // **************************************
-
-        // dispatch(increment())
     }
 
     const btnn = () => {
@@ -43,7 +38,6 @@ const Index = () => {
             className='bg-orange-400 text-white'
         >
 
-            {/* {prod?.map(v => <div */}
             {count?.map(v => <div
                 key={v.id}
                 className='flex py-1'
@@ -51,15 +45,9 @@ const Index = () => {
                 <p>{v.name}</p>
                 <button
                     className='bg-slate-500 py-1 px-2 ml-5 hover:scale-105 transition-transform'
-                    // onClick={() => addBtn(v)}
-                    // onClick={() => dispatch(increment())}
                     onClick={() => (dispatch(incrementQuantity(v)), btnn())}
-                // onClick={() => (dispatch(increment()), btnn())}
-                // onClick={() => dispatch(incrementQuantity(v))}
-                // > Add to Cart - {console.log('countcount', count)}</button>
                 >Add to Cart - {v?.quantity}</button>
-                {/* >Add to Cart - {count}</button> */}
-            </div >)
+            </div>)
             }
         </div >
     )

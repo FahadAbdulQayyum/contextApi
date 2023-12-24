@@ -1,10 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 import Products from '../../../Products.json'
+import { useEffect, useState } from 'react'
+
+// let pd = []
+
+// const [pdd, setPdd] = useState([])
+
+// useEffect(() => {
+//     let pd = JSON.parse(localStorage.getItem('addToCart')) !== null ? JSON.parse(localStorage.getItem('addToCart')) : Products
+//     setPdd(pd)
+
+// }, [])
 
 const initialState = {
     value: 0,
     // ...Products
-    Products
+    // Products: pdd
+    Products: pdd
+    // Products: JSON.parse(localStorage.getItem('addToCart')) !== null ? JSON.parse(localStorage.getItem('addToCart')) : Products
 }
 
 export const counterSlice = createSlice({
@@ -49,6 +62,7 @@ export const counterSlice = createSlice({
 
             console.log('state,action', state, action.payload.quantity)
 
+            localStorage.setItem('addToCart', JSON.stringify(state.Products))
         },
         // showValue: (state) => {
         //     console.log('state', state.value)
