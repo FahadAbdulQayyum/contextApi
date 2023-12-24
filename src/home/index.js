@@ -11,19 +11,12 @@ const Index = () => {
     }, [])
 
     const addBtn = v => {
-        const updatedProducts = prod.map(pd => {
-            if (pd.id === v.id) {
-                console.log('pdddd', pd)
-                return {
-                    ...pd,
-                    quantity: pd.quantity + 1
-                }
-            }
-            return pd;
-        })
-        console.log('updatedProducts', updatedProducts)
+        const updatedProducts = prod.map(pd => pd.id === v.id ? {
+            ...pd,
+            quantity: pd.quantity + 1
+        } : pd
+        )
         setProd(updatedProducts)
-        localStorage.setItem('addToCart', JSON.stringify(updatedProducts))
     }
 
     return (
