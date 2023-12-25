@@ -14,6 +14,8 @@ const Index = () => {
     const count = useSelector((state) => state.counter.Products)
     console.log('counttt', count)
     let qty = count?.reduce((a, b) => a + b.quantity, 0)
+    let p = count?.reduce((v, b) => (v + b.price * b.quantity), 0)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -22,11 +24,13 @@ const Index = () => {
 
         // let a = prod?.reduce((v, b) => v + b.quantity, 0)
         let a = prd?.reduce((v, b) => v + b.quantity, 0)
+        let p = prd?.reduce((v, b) => (v + b.price * b.quantity), 0)
         // let aaa = dispatch(showValue())
         // console.log('aaa', a, dispatch)
         // console.log('aaa', a, aaa)
 
         console.log('aaa', a, count)
+        console.log('ppp', p)
         setQnty(a)
     }, [])
 
@@ -55,7 +59,13 @@ const Index = () => {
 
                 {/* {qnty} */}
                 {/* {count} */}
-                {qty}
+                {/* {qty + ' ---- ' + p} */}
+                <div
+                    className='flex justify-between'
+                >
+                    <p>{qty}</p>
+                    <p>{'$' + p}</p>
+                </div>
             </div>
         </div>
     )

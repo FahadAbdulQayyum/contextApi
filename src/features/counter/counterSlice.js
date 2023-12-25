@@ -1,6 +1,11 @@
+'use client'
+
 import { createSlice } from '@reduxjs/toolkit'
 import Products from '../../../Products.json'
 import { useEffect, useState } from 'react'
+import SaveData from '@/savedData/saveData'
+import GetData from '@/savedData/getData'
+// import { GetData } from '@/savedData/getData'
 
 // let pd = []
 
@@ -13,10 +18,15 @@ import { useEffect, useState } from 'react'
 // }, [])
 
 const initialState = {
+    c: console.log('GetData()', Boolean(GetData())),
     value: 0,
     // ...Products
     // Products: pdd
-    Products: pdd
+    // Products
+    // Products: GetData() !== "undefined" ? GetData() : Products
+    // Products: GetData() !== null ? GetData() : Products
+    // Products: Boolean(GetData()) ? GetData() : Products
+    Products: GetData() ? GetData() : Products
     // Products: JSON.parse(localStorage.getItem('addToCart')) !== null ? JSON.parse(localStorage.getItem('addToCart')) : Products
 }
 
@@ -62,7 +72,8 @@ export const counterSlice = createSlice({
 
             console.log('state,action', state, action.payload.quantity)
 
-            localStorage.setItem('addToCart', JSON.stringify(state.Products))
+            // localStorage.setItem('addToCart', JSON.stringify(state.Products))
+            SaveData(state.Products)
         },
         // showValue: (state) => {
         //     console.log('state', state.value)

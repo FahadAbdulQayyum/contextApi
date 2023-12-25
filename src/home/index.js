@@ -38,11 +38,13 @@ const Index = () => {
             className='bg-orange-400 text-white'
         >
 
+            {/* {Products?.map(v => <div */}
             {count?.map(v => <div
                 key={v.id}
                 className='flex py-1'
             >
                 <p>{v.name}</p>
+                <p>&nbsp;&nbsp;{'--- '}{v.price}</p>
                 <button
                     className='bg-slate-500 py-1 px-2 ml-5 hover:scale-105 transition-transform'
                     onClick={() => (dispatch(incrementQuantity(v)), btnn())}
