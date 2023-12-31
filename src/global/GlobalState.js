@@ -7,7 +7,8 @@ const GlobalState = props => {
     const initialState = {
         products: [],
         // update: false
-        update: null
+        update: null,
+        updateValue: []
     }
 
     useEffect(() => {
@@ -36,15 +37,21 @@ const GlobalState = props => {
         type: 'UpdateProduct', payload: id
     })
 
+    const submitProduct = data => dispatch({
+        type: 'UpdateValueProduct', payload: data
+    })
+
     // const deleteProduct = id => console.log('iddd', id)
 
     return <globalContext.Provider
         value={{
             products: state.products,
+            updateValue: state.updateValue,
             update: state.update,
             addProduct: addProduct,
             deleteProduct: deleteProduct,
-            updateProduct: updateProduct
+            updateProduct: updateProduct,
+            submitProduct: submitProduct,
         }
         }
     >
