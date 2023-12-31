@@ -6,7 +6,6 @@ const GlobalState = props => {
 
     const initialState = {
         products: [],
-        // update: false
         update: null,
         updateValue: []
     }
@@ -40,8 +39,6 @@ const GlobalState = props => {
     const submitProduct = data => dispatch({
         type: 'UpdateValueProduct', payload: data
     })
-
-    // const deleteProduct = id => console.log('iddd', id)
 
     return <globalContext.Provider
         value={{

@@ -17,8 +17,6 @@ const Index = () => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    // console.log('e', e.target.value)
-    console.log('product', product, new Date().valueOf())
     addProduct({ id: new Date().valueOf(), product })
     setProduct('')
   }
