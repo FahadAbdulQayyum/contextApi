@@ -5,7 +5,9 @@ import globalReducer from "./globalReducer";
 const GlobalState = props => {
 
     const initialState = {
-        products: []
+        products: [],
+        // update: false
+        update: null
     }
 
     useEffect(() => {
@@ -30,13 +32,19 @@ const GlobalState = props => {
         type: 'DeleteProduct', payload: id
     })
 
+    const updateProduct = id => dispatch({
+        type: 'UpdateProduct', payload: id
+    })
+
     // const deleteProduct = id => console.log('iddd', id)
 
     return <globalContext.Provider
         value={{
             products: state.products,
+            update: state.update,
             addProduct: addProduct,
-            deleteProduct: deleteProduct
+            deleteProduct: deleteProduct,
+            updateProduct: updateProduct
         }
         }
     >

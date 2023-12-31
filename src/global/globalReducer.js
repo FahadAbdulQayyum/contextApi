@@ -18,8 +18,16 @@ const globalReducer = (state, action) => {
             return {
                 ...state,
                 products: state.products.filter(v => v.id !== action.payload),
-                // ls: localStorage.setItem('pd', JSON.stringify([...state.products.filter(v => v.id !== state.payload)]))
                 ls: localStorage.setItem('pd', JSON.stringify([...state.products.filter(v => v.id !== action.payload)]))
+            }
+        case 'UpdateProduct':
+            console.log('UpdateProduct function called')
+            return {
+                ...state,
+                // update: true,
+                update: action.payload,
+                // products: state.products.filter(v => v.id !== action.payload),
+                // ls: localStorage.setItem('pd', JSON.stringify([...state.products.filter(v => v.id !== action.payload)]))
             }
         default: return { ...state }
     }
