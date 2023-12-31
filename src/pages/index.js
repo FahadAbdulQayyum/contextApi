@@ -1,54 +1,33 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { useEffect } from 'react'
-import axios from 'axios'
-import { useRouter } from 'next/router'
-// import Home from '@/components/home/home'
-import Home from '../home';
-// import Navbar from '@/components/navbar/navbar'
-import Navbar from '../navbar'
-import FloatingData from './FloatingData'
+import React, {
+  useState, useContext
+} from 'react'
 
-
-import { store } from './app/store'
-import { Provider } from 'react-redux'
+import globalContext from '@/global/globalContext';
 
 const Index = () => {
 
-  // const router = useRouter()
+  const [product, setProduct] = useState()
 
-  // useEffect(() => {
-  //   const tok = async () => {
-  //     const token = localStorage.getItem('token')
-  //     console.log('tokennn', token)
-  //     try {
-  //       const { data } = await axios.get('/api/auth/verifyuser', { headers: { 'x-auth-token': token } })
-  //       console.log('dataa', data)
-  //       if (!data.success || data === null) {
-  //         router.replace('/auth/login')
-  //       }
+  const { addProduct, products } = useContext(globalContext)
 
-  //     } catch (err) {
-  //       console.error(err)
-  //       localStorage.setItem('token', '')
-  //       router.replace('/auth/login')
-  //     }
-  //   }
-  //   tok()
-  // }, [])
+  const onFormSubmit = e => {
+    e.preventDefault();
+    // console.log('e', e.target.value)
+    console.log('product', product)
+    addProduct({ product })
+    setProduct('')
+  }
 
   return (
     <div>
-      <Provider store={store}>
-
-        <Navbar />
-        <Home />
-        <div
-          className='absolute right-10 bottom-10'
-        >
-          <FloatingData />
-        </div>
-      </Provider>,
+      <form onSubmit={onFormSubmit}>
+        <input type='text' value={product} placeholder='Enter your product name' onChange={e => setProduct(e.target.value)} />
+        <input type='submit' value='Add Product' />
+      </form>
+      {/* <>{products?.map(v => <>{v.product}</>)}</> */}
+      <>
+        <ul className="list-disc list-inside">{products?.map(v => <li>{v.product}</li>)}</ul>
+      </>
     </div>
   )
 }
