@@ -26,14 +26,22 @@ const GlobalState = props => {
         type: 'AddProduct', payload: data
     })
 
+    const deleteProduct = id => dispatch({
+        type: 'DeleteProduct', payload: id
+    })
+
+    // const deleteProduct = id => console.log('iddd', id)
+
     return <globalContext.Provider
         value={{
             products: state.products,
-            addProduct: addProduct
-        }}
+            addProduct: addProduct,
+            deleteProduct: deleteProduct
+        }
+        }
     >
         {props.children}
-    </globalContext.Provider>
+    </globalContext.Provider >
 }
 
 export default GlobalState

@@ -13,6 +13,14 @@ const globalReducer = (state, action) => {
                 products: [...state.products, action.payload],
                 ls: localStorage.setItem('pd', JSON.stringify([...state.products, action.payload]))
             }
+        case 'DeleteProduct':
+            console.log('DeleteProduct function called')
+            return {
+                ...state,
+                products: state.products.filter(v => v.id !== action.payload),
+                // ls: localStorage.setItem('pd', JSON.stringify([...state.products.filter(v => v.id !== state.payload)]))
+                ls: localStorage.setItem('pd', JSON.stringify([...state.products.filter(v => v.id !== action.payload)]))
+            }
         default: return { ...state }
     }
 }
