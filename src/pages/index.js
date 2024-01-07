@@ -40,8 +40,8 @@ const Index = () => {
       {/* <input type='submit' value='Increment' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(increment())} /> */}
       <input type='submit' value='Increment' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(increment(1))} />
       {/* <p>Counter: {counter}</p> */}
-      <p>Counter: {counter.value}</p>
-      <input type='submit' value='Decrement' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(decrement(1))} />
+      <p>Counter: {console.log('counter', counter)}</p>
+      <input type='submit' value='Decrement' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(decrement())} />
 
     </div>
   )
