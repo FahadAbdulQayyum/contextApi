@@ -37,9 +37,11 @@ const Index = () => {
         <ul className="list-disc list-inside">{products?.map(v => <div className={`flex justify-between bg-orange-300 my-1 ${update === v.id ? 'bg-stone-800 text-white' : 'bg-orange-300'}`} key={v.id} ><li className='flex'> {update !== v.id ? <p>{v.product}</p> : <input type='text' value={updatedValue} onChange={e => setUpdatedValue(e.target.value)} placeholder='Enter your update' className='text-black' />}</li><div className='flex justify-between w-28 bg-slate-300'><button onClick={() => deleteProduct(v.id)}>Delete</button><button onClick={() => updateProduct(v.id)}>Update</button><button onClick={() => submitProduct(updatedValue)}>Submit</button></div></div>).reverse()}</ul >
       </> */}
 
-      <input type='submit' value='Increment' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(increment())} />
-      <p>Counter: {counter}</p>
-      <input type='submit' value='Decrement' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(decrement())} />
+      {/* <input type='submit' value='Increment' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(increment())} /> */}
+      <input type='submit' value='Increment' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(increment(1))} />
+      {/* <p>Counter: {counter}</p> */}
+      <p>Counter: {counter.value}</p>
+      <input type='submit' value='Decrement' className='p-2 bg-orange-400 rounded text-white ml-2' onClick={() => dispatch(decrement(1))} />
 
     </div>
   )
